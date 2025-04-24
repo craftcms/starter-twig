@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6f264db951a83116a6a40f4bd02584b",
+    "content-hash": "e18025170c9312953d94d4d75ba53e18",
     "packages": [
         {
             "name": "99designs/http-signatures",
@@ -473,11 +473,11 @@
         },
         {
             "name": "craftcms/ckeditor",
-            "version": "4.6.0",
+            "version": "4.7.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/ckeditor/zipball/b838205bb2de62a86863548454bd42ee0b3fd5c9",
-                "reference": "b838205bb2de62a86863548454bd42ee0b3fd5c9",
+                "url": "https://api.github.com/repos/craftcms/ckeditor/zipball/ff0f03429d51d8237784e5738d478e5868fc88d9",
+                "reference": "ff0f03429d51d8237784e5738d478e5868fc88d9",
                 "shasum": ""
             },
             "require": {
@@ -521,7 +521,7 @@
                 "docs": "https://github.com/craftcms/ckeditor/blob/master/README.md",
                 "rss": "https://github.com/craftcms/ckeditor/commits/master.atom"
             },
-            "time": "2025-02-18T22:56:36+00:00"
+            "time": "2025-04-21T23:09:09+00:00"
         },
         {
             "name": "craftcms/cloud",
@@ -562,11 +562,11 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "5.7.0",
+            "version": "5.7.3",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/45b4a1a56a82ad85d8d3442fcf914f35cd62e73b",
-                "reference": "45b4a1a56a82ad85d8d3442fcf914f35cd62e73b",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/c55baf92246ee7c4088cc7fa3942dcd2c93c1a27",
+                "reference": "c55baf92246ee7c4088cc7fa3942dcd2c93c1a27",
                 "shasum": ""
             },
             "require": {
@@ -614,14 +614,11 @@
                 "twig/twig": "~3.15.0",
                 "voku/stringy": "^6.4.0",
                 "web-auth/webauthn-lib": "~4.9.0",
-                "webonyx/graphql-php": "~14.11.5",
+                "webonyx/graphql-php": "~14.11.10",
                 "yiisoft/yii2": "~2.0.52.0",
                 "yiisoft/yii2-debug": "~2.1.26.0",
                 "yiisoft/yii2-queue": "~2.3.2",
                 "yiisoft/yii2-symfonymailer": "^4.0.0"
-            },
-            "conflict": {
-                "webonyx/graphql-php": "14.11.7"
             },
             "provide": {
                 "bower-asset/inputmask": "5.0.9",
@@ -666,7 +663,7 @@
                 "docs": "https://craftcms.com/docs/5.x/",
                 "rss": "https://github.com/craftcms/cms/releases.atom"
             },
-            "time": "2025-04-15T19:50:36+00:00"
+            "time": "2025-04-23T17:03:05+00:00"
         },
         {
             "name": "craftcms/flysystem",
