@@ -1,0 +1,13 @@
+{% include [
+  'pages/' ~ Request.segment(1) ~ '/' ~ entry.slug,
+  'pages/' ~ Request.segment(1) ~ '/' ~ entry.type.handle,
+  'pages/' ~ Request.segment(1) ~ '/' ~ entry.section.handle,
+  'pages/' ~ Request.segment(1) ~ '/default',
+  'pages/' ~ entry.section.handle ~ '/' ~ entry.slug,
+  'pages/' ~ entry.section.handle ~ '/' ~ entry.type.handle,
+  'pages/' ~ entry.section.handle ~ '/default',
+  'pages/' ~ entry.slug,
+  'pages/' ~ entry.type.handle,
+  'pages/' ~ entry.section.handle,
+  'pages/default'
+] %}

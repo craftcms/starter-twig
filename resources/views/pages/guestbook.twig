@@ -1,0 +1,48 @@
+{% extends "pages/default" %}
+{% set postQuery = craft.entries.section('guestbookPosts').limit(3).orderBy('postDate DESC') %}
+{% set postSection = app('CraftCms\\Cms\\Section\\Sections').getSectionByHandle('guestbookPosts') %}
+{% paginate postQuery as pageInfo, posts %}
+
+{% block title %}
+  {% if pageInfo.getPrevUrl() or pageInfo.getNextUrl() %}
+  , Page {{ pageInfo.currentPage }} of {{ pageInfo.totalPages }}
+  {% endif %}
+{% endblock %}
+
+{% block landing %}
+  <div class="container mx-auto px-2 sm:grid gap-6 grid-cols-2">
+    <section class="mb-12">
+      {% if posts|length %}
+        <ol class="mb-2 divide-y divide-slate-300">
+        {% for post in posts %}
+          <li>
+            <article class="text-xl py-6">
+              {{ post.textBlock|md }}
+              <p class="text-sm mt-1">
+                <time datetime="{{ post.postDate|atom }}">{{ post.postDate|datetime }}</time><br />
+                By {{ post.author.fullName }}
+              </p>
+            </article>
+          </li>
+        {% endfor %}
+        </ol>
+        {% include '_partials/pagination' with { pageInfo: pageInfo } %}
+      {% else %}
+        <p class="text-2xl">No entries yet. Create one using the form.</p>
+      {% endif %}
+    </section>
+
+    <section>
+      <div class="bg-slate-200 p-6 mb-9 rounded">
+        <h2 class="font-bold text-3xl mb-4">Post an entry</h2>
+        {% if currentUser %}
+          {% include "_partials/postForm" with { id: postSection.id } %}
+        {% else %}
+          <p>You need to be signed in to post an entry in the guestbook.</p>
+          {% include "_partials/signInForm" %}
+      {% endif %}
+      </div>
+    </section>
+
+  </div>
+{% endblock %}

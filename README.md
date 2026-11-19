@@ -1,6 +1,9 @@
-# Craft CMS + Twig Starter
+# Craft CMS + Twig Starter (Craft 6)
 
-This is a basic blog starter project for creating [Craft CMS](https://craftcms.com/) using the native [Twig](https://craftcms.com/docs/5.x/development/twig.html) templating language. It's a simple install that requires no database dump and no front-end tooling. It includes a single, first-party plugin ([CKeditor](https://plugins.craftcms.com/ckeditor)) to support a richer authoring experience.
+> [!WARNING]
+> This branch targets Craft 6, which is in beta. For production sites, use the Craft 5 version on the `5.x` branch.
+
+This is a basic blog starter project for creating [Craft CMS](https://craftcms.com/) using the native [Twig](https://craftcms.com/docs/5.x/development/twig.html) templating language. It's a simple install that requires no database dump and no front-end tooling. It includes a single, first-party plugin ([CKEditor](https://plugins.craftcms.com/ckeditor)) to support a richer authoring experience.
 
 > [!TIP]
 > Check out our full list of [starter projects](https://craftcms.com/starters)!
@@ -12,7 +15,7 @@ This is a basic blog starter project for creating [Craft CMS](https://craftcms.c
 - Elegant content composition via CKEditor and nested entries;
 - Front-end _Guestbook_ form, protected by login;
 - Arbitrary _Pages_ structure for additional, hierarchical content;
-- Preconfigured, [Craft Cloud](https://craftcms.com/cloud)-ready asset storage;
+- Uploads stored in `public/uploads`, configured as the `cloud` disk in `config/filesystems.php`;
 
 The Entries sidebar has also been configured to make these pages and sections easier to find for this setup.
 
@@ -21,7 +24,7 @@ The Entries sidebar has also been configured to make these pages and sections ea
 1. Clone this repository and move into the folder:
 
     ```bash
-    git clone https://github.com/craftcms/starter-twig.git
+    git clone --branch 6.x https://github.com/craftcms/starter-twig.git
     cd starter-twig/
     ```
 
@@ -37,10 +40,16 @@ The Entries sidebar has also been configured to make these pages and sections ea
     ddev composer install
     ```
 
-4. Run the Craft setup wizard:
+4. Generate an application key:
 
     ```bash
-    ddev craft install
+    ddev php artisan key:generate
+    ```
+
+5. Run the Craft setup wizard:
+
+    ```bash
+    ddev php artisan craft:install
     ```
 
 Congratulations—Craft has been installed! You can start exploring the control panel by visiting `https://starter-twig.ddev.site/admin` in your browser, or running `ddev launch admin`.
@@ -61,11 +70,11 @@ The Craft [control panel](https://craftcms.com/docs/5.x/system/control-panel.htm
 
 ### Project Structure
 
-This project was scaffolded from our blank-slate started kit, and therefore follows its overall [directory structure](https://craftcms.com/docs/5.x/system/directory-structure.html) and [configuration scheme](https://craftcms.com/docs/5.x/configure.html).
+This project was scaffolded from our blank-slate starter kit, and therefore follows its overall [directory structure](https://laravel.com/docs/structure) and [configuration scheme](https://craftcms.com/docs/6.x/compatibility.html#configuration).
 
 ### Licensing
 
-The free Craft _Solo_ [edition](https://craftcms.com/docs/5.x/editions.html) is active by default, and will automatically acquire a perpetual license to evaluate, develop, and deploy a site for yourself or a friend. This key will be written out to `config/license.key`, and is safe to commit to version control.
+The free Craft _Solo_ [edition](https://craftcms.com/docs/5.x/editions.html) is active by default, and will automatically acquire a perpetual license to evaluate, develop, and deploy a site for yourself or a friend. This key will be written out to `config/craft/license.key`, and is safe to commit to version control.
 
 You can upgrade to Craft _Team_ or _Pro_ any time! Read more about [licensing](https://craftcms.com/knowledge-base/how-craft-license-enforcement-works) in the Knowledge Base.
 
@@ -73,7 +82,7 @@ You can upgrade to Craft _Team_ or _Pro_ any time! Read more about [licensing](h
 
 ### Running on a Different Domain
 
-The DDEV configuration files shipped with this project have a hard-coded project “name” that determines (among other things) the URL prefix. If you would like to change this (say, prior to pushing the project to a [new remote](#pushing-to-a-new-remote)), open `.ddev/config.yml` and update the `name` key.
+The DDEV configuration files shipped with this project have a hard-coded project “name” that determines (among other things) the URL prefix. If you would like to change this (say, prior to pushing the project to a [new remote](#pushing-to-a-new-remote)), open `.ddev/config.yaml` and update the `name` key.
 
 Apply that change by running `ddev start` in the project directory. The site will restart, and be available at `https://{new-name}.ddev.site`!
 
@@ -102,6 +111,10 @@ When cloning a git repository, it typically sets up the origin as a default _rem
 
 > [!TIP]
 > You may be able to create repositories in contexts that your local environment is not authorized to read from or write to! If you encounter permissions issues at this stage, consult the git provider’s documentation.
+
+## Contributing
+
+Thank you for considering contributing to this starter! It is generated by [Maestro](https://github.com/craftcms/maestro), which builds all of Craft's starter kits, so changes made directly in this repository are overwritten. Please make all contributions through Maestro.
 
 ## Getting Help
 

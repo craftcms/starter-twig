@@ -1,0 +1,99 @@
+{% set global = craft.entries.section('global').one() %}
+{% set flashes = { notice: session('notice'), success: session('success'), error: session('error') }|filter %}
+
+<!DOCTYPE html>
+<html lang="{{ currentSite.language }}">
+<head>
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta charset="utf-8" />
+  <title>{% if flashes|length %}{% for level, flash in flashes %}{{ flash }} - {% endfor %}{% endif %}{{ entry.title }}{% block title %}{% endblock %} | {{ siteName }}</title>
+  <meta name="referrer" content="origin-when-cross-origin" />
+
+  {# Include Tailwind Play CDN for basic styling #}
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .prose h2,
+    .prose h3,
+    .prose h4,
+    .prose h5,
+    .prose h6 {
+      font-weight: bold;
+      margin-top: 1em;
+      margin-bottom: 0.5rem;
+    }
+    .prose h2 { font-size: 2em; }
+    .prose h3 { font-size: 1.5em; }
+    .prose h4 { font-size: 1.25em; }
+    .prose h5 { font-size: 1em; }
+    .prose h6 { font-size: 0.875em; }
+
+    .prose p,
+    .prose dd {
+      margin-bottom: 1em;
+    }
+    .prose ul {
+      list-style-type: disc;
+      margin-left: 1em;
+    }
+    .prose ol {
+      list-style-type: decimal;
+      margin-left: 1em;
+    }
+    .prose dt {
+      font-weight: bold;
+    }
+    .prose table {
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    .prose table th,
+    .prose table td {
+      padding: 0.5em;
+      border: 1px solid #ccc;
+    }
+    .prose blockquote {
+      border-left: 4px solid #ccc;
+      padding-left: 1em;
+      margin-left: 0;
+      font-style: italic;
+      font-family: serif;
+      margin-bottom: 1em;
+      margin-top: 1em;
+    }
+    .prose q {
+      font-style: italic;
+    }
+    .prose pre {
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body class="light-mode">
+  <a href="#main" class="transition left-0 absolute p-3 m-3 -translate-y-16 focus:translate-y-0 bg-slate-50">Skip to main content</a>
+  
+  {% include "_partials/header" %}
+  
+  {% if flashes|length %}
+    <div class="bg-red-600 text-slate-50 text-center">
+    {% for level, flash in flashes %}
+      <p class="{{ level }} container mx-auto p-2 text-md">{{ flash }}</p>
+    {% endfor %}
+    </div>
+  {% endif %}
+
+  <main class="page {{ entry.slug }}" id="main" tabindex="-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "_partials/footer" %}
+
+</body>
+</html>
