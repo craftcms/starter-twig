@@ -1,22 +1,17 @@
 defaultPlacement: end
 enableVersioning: true
 entryTypes:
-  - 5dd08fc8-3ea4-4582-952f-4c0f7ebf409e # Category
+  -
+    uid: 5dd08fc8-3ea4-4582-952f-4c0f7ebf409e # Category
 handle: blogCategories
 maxAuthors: 1
+minAuthors: 1
 name: 'Blog Categories'
 previewTargets:
   -
-    __assoc__:
-      -
-        - label
-        - 'Primary entry page'
-      -
-        - urlFormat
-        - '{url}'
-      -
-        - refresh
-        - '1'
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
 propagationMethod: all
 siteSettings:
   58ccb571-6c72-449f-8e7b-6f43c5d416b3: # Starter Blog

@@ -6,6 +6,7 @@
  * list of the available settings in vendor/craftcms/cms/src/config/GeneralConfig.php.
  *
  * @see \craft\config\GeneralConfig
+ * @link https://craftcms.com/docs/5.x/reference/config/general.html
  */
 
 use craft\config\GeneralConfig;
@@ -20,6 +21,10 @@ return GeneralConfig::create()
     ->preloadSingles()
     // Prevent user enumeration attacks
     ->preventUserEnumeration()
+    // Prevent the front-end Login page
+    ->loginPath(false)
+    // Enable the Twig sandbox for system messages, etc.
+    ->enableTwigSandbox()
     // Set the @webroot alias so the clear-caches command knows where to find CP resources
     ->aliases([
         '@webroot' => dirname(__DIR__) . '/web',
